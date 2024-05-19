@@ -1,4 +1,4 @@
-name: MysteryDiva
+name: Publish to Docker
 on:
   push:
     branches:
@@ -17,14 +17,14 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/MysteryDiva/publish-packages/game
+          images: ghcr.io/Mysterydiva/publish-packages/game
           tags: type=sha
       - name: Login to GHCR
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: Mysterydiva
-          password: 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
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build container
         uses: docker/build-push-action@v5
         with:
