@@ -1,4 +1,4 @@
-name: MysteryDiva
+name: Publish to Docker
 on:
   push:
     branches:
